@@ -1,0 +1,11 @@
+{
+    "name": "azurefundercommonmessages/php",
+    "description": "Azure - Evolve common request/response objects",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "AzureFunderCommonMessages\\PHP\\": "v1/PHP/src/"
+        }
+    },
+    "require": {}
+}

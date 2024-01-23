@@ -1,0 +1,35 @@
+name: Branch create
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - 'master'
+      - 'main'
+      - 'v[0-9]+-*'
+
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: false
+
+jobs:
+  call-template:
+    if: startsWith(github.head_ref, 'evo-') || startsWith(github.head_ref, 'EVO-')
+    uses: EvolutionFunding/evo.core/.github/workflows/template_branch_create_v1.yml@master
+    with:
+      CAPABILITY: 'funders'                            # Set to the name of the vertical slice your service lives in
+      SERVICE_NAME: 'blackhorse'                  # Set to the name of your service, keep it below 15 characters
+      API_MAJOR_VERSION: '1'                      # Major version of your service, should only be changed on breaking changes
+      #MAIN_BICEP_FILE_PATH: ''                   # OPTIONAL: defaults to 'bicep/main.bicep' if not specified
+      #MAIN_BICEP_FILE_ADDITIONAL_PARAMETERS: ''  # OPTIONAL: defaults to 'bicep/params.json' if not specified
+      #AZURE_SQL_SERVER_INSTANCE: '0'             # OPTIONAL: defaults to 0 unless specified otherwise
+      DOTNET_PATH_TO_SOLUTION: 'Orchestrator'         # Folder that contains your function
+      #DOTNET_VERSION: ''                         # defauls to 6.0.x if not specified
+      RUN_DB_MIGRATIONS: true                     # set to true if you have database migrations
+    secrets: inherit

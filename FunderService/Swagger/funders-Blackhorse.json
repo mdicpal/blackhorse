@@ -1,0 +1,2876 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "funders-Blackhorse",
+    "description": "",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://api-dev.evolutionfunding.com/internal/funders-blackhorse/v1"
+    }
+  ],
+  "paths": {
+    "/customers": {
+      "post": {
+        "summary": "SendApplication",
+        "description": "SendApplication",
+        "operationId": "sendapplication",
+        "parameters": [
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-idempotency",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendApplicationRequest"
+              },
+              "examples": {
+                "default": {
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendApplicationResponse"
+                },
+                "examples": {
+                  "default": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericErrorResponse"
+                },
+                "example": {
+                  "responseMessage": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}/proposals/{proposal_id}/decision": {
+      "get": {
+        "summary": "GetDecision",
+        "description": "GetDecision",
+        "operationId": "getdecision",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Format - int32. The Customer Id ",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "description": "Format - int32. The Proposal Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Decision"
+                },
+                "example": {
+                  "decision_status": "ACCEPTED",
+                  "proposal_number": "string",
+                  "conditional": true,
+                  "condition": [
+                    "string"
+                  ],
+                  "decision_message": {},
+                  "last_updated": "string",
+                  "accept_expiry_date": "string",
+                  "decline_letter": {},
+                  "queue_position": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "errors": {
+                    "code": "string",
+                    "message": "string",
+                    "incorrect_parameter": [
+                      {
+                        "parameter_name": "string",
+                        "parameter_value": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "errors": {
+                    "code": "string",
+                    "message": "string",
+                    "incorrect_parameter": [
+                      {
+                        "parameter_name": "string",
+                        "parameter_value": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/plans/{plan_id}": {
+      "get": {
+        "summary": "GetPlans",
+        "description": "GetPlans",
+        "operationId": "getplans",
+        "parameters": [
+          {
+            "name": "plan_id",
+            "in": "path",
+            "description": "Format - int32. The Plan Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPlanResponse"
+                },
+                "example": {
+                  "description": "string",
+                  "plan": "string",
+                  "product": "string",
+                  "campaign": "string",
+                  "promotion": "string",
+                  "max_commission": "string",
+                  "months_to_first_payment": "string",
+                  "volume_bonus": "string",
+                  "plan_end_date": "string",
+                  "option_to_purchase_fee": "string",
+                  "commission_1": "string",
+                  "commission_2": "string",
+                  "manufacturer_dealer_credit": "string",
+                  "rate_line": [
+                    {
+                      "min_advance": "string",
+                      "max_advance": "string",
+                      "min_term": "string",
+                      "max_term": "string",
+                      "min_age": "string",
+                      "max_age": "string",
+                      "new_vehicle": "string",
+                      "commission_rate": "string",
+                      "min_rate": "string",
+                      "max_rate": "string",
+                      "min_deposit_amount": "string",
+                      "min_deposit_percentage": "string"
+                    }
+                  ],
+                  "allowances": [
+                    {
+                      "cap_code": "string",
+                      "manufacturer_deposit_allowance": "string",
+                      "dealer_deposit_allowance": "string",
+                      "dealer_subsidy": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}": {
+      "put": {
+        "summary": "PutCustomer",
+        "description": "PutCustomer",
+        "operationId": "putcustomer",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Format - int32. The Customer Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-idempotency",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendApplicationRequest"
+              },
+              "examples": {
+                "default": {
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PutCustomerResponse"
+                },
+                "examples": {
+                  "default": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericErrorResponse"
+                },
+                "example": {
+                  "responseMessage": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}/proposals/{proposal_id}/submit": {
+      "post": {
+        "summary": "PostSubmit",
+        "description": "PostSubmit",
+        "operationId": "postsubmit",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Format - int32. The customer Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "description": "Format - int32. The Proposal Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-idempotency",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostSubmitResponse"
+                },
+                "examples": {
+                  "default": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericErrorResponse"
+                },
+                "example": {
+                  "responseMessage": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}/proposals/{proposal_id}/not-taken-up": {
+      "post": {
+        "summary": "NotTakenUp",
+        "description": "NotTakenUp",
+        "operationId": "nottakenup",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Format - int32. The Customer Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "description": "Format - int32. The Proposal Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-idempotency",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotTakenUpResponse"
+                },
+                "example": {
+                  "reason": "string",
+                  "competitor": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}/ proposals/{proposal_id}/uploads": {
+      "post": {
+        "summary": "PostUploads",
+        "description": "PostUploads",
+        "operationId": "postuploads",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Format - int32. The Customer Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "description": "Format - int32. The Proposal Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-lbg-major-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-minor-dealerId",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "x-lbg-idempotency",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostUploadRequest"
+              },
+              "example": {
+                "file_type": "string",
+                "service": "string",
+                "document_type": "string",
+                "uv_verified": "string",
+                "document": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostUploadResponse"
+                },
+                "example": {
+                  "file_type": "string",
+                  "service": "string",
+                  "document_type": "string",
+                  "uv_verified": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SendApplicationRequest": {
+        "type": "object",
+        "properties": {
+          "customer_type": {
+            "$ref": "#/components/schemas/CustomerType"
+          },
+          "individual": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "$ref": "#/components/schemas/Title"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "middle_initial": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "date_of_birth": {
+                "type": "string"
+              },
+              "email_address": {
+                "type": "string"
+              },
+              "contact_number": {
+                "type": "string"
+              },
+              "contact_number_alternative": {
+                "type": "string"
+              },
+              "number_of_dependants": {
+                "type": "string"
+              },
+              "marital_status": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "gender": {
+                "$ref": "#/components/schemas/Gender"
+              },
+              "residential_status": {
+                "$ref": "#/components/schemas/ResidentialStatus"
+              },
+              "nationality": {
+                "$ref": "#/components/schemas/Nationality"
+              },
+              "alias": {}
+            }
+          },
+          "organisation": {
+            "$ref": "#/components/schemas/Organisation"
+          },
+          "address": {
+            "type": "array",
+            "items": {
+              "required": [
+                "address_number",
+                "house_name",
+                "house_number",
+                "flat_number",
+                "street",
+                "district",
+                "town",
+                "postcode",
+                "years_at_address",
+                "months_at_address",
+                "county",
+                "overseas"
+              ],
+              "type": "object",
+              "properties": {
+                "address_number": {
+                  "$ref": "#/components/schemas/AddressType"
+                },
+                "house_name": {
+                  "type": "string"
+                },
+                "house_number": {
+                  "type": "string"
+                },
+                "flat_number": {},
+                "street": {
+                  "type": "string"
+                },
+                "district": {
+                  "type": "string"
+                },
+                "town": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "years_at_address": {
+                  "type": "string"
+                },
+                "months_at_address": {
+                  "type": "string"
+                },
+                "county": {},
+                "overseas": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "employment": {
+            "type": "object",
+            "properties": {
+              "permanent_employee": {
+                "type": "string"
+              },
+              "full_time": {
+                "type": "boolean"
+              },
+              "employment_type": {
+                "$ref": "#/components/schemas/EmploymentType"
+              },
+              "employer_address": {
+                "type": "object",
+                "properties": {
+                  "address_number": {
+                    "$ref": "#/components/schemas/AddressType"
+                  },
+                  "house_name": {
+                    "type": "string"
+                  },
+                  "house_number": {
+                    "type": "string"
+                  },
+                  "flat_number": {
+                    "type": "string"
+                  },
+                  "street": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "overseas": {
+                    "type": "string"
+                  }
+                }
+              },
+              "occupation": {
+                "type": "string"
+              },
+              "employer_name": {
+                "type": "string"
+              },
+              "years_with_employer": {
+                "type": "string"
+              },
+              "months_with_employer": {
+                "type": "string"
+              },
+              "use_employer_address": {}
+            }
+          },
+          "marketing": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "boolean"
+              },
+              "phone": {
+                "type": "boolean"
+              },
+              "sms": {
+                "type": "boolean"
+              },
+              "mail": {
+                "type": "boolean"
+              }
+            }
+          },
+          "proposal": {
+            "$ref": "#/components/schemas/Proposal"
+          }
+        }
+      },
+      "SendApplicationResponse": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "customer_type": {
+            "$ref": "#/components/schemas/CustomerType"
+          },
+          "individual": {
+            "type": "object",
+            "properties": {
+              "contact_number_alternative": {
+                "type": "string"
+              },
+              "number_of_dependants": {
+                "type": "string"
+              },
+              "title": {
+                "$ref": "#/components/schemas/Title"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "middle_initial": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "date_of_birth": {
+                "type": "string"
+              },
+              "contact_number": {
+                "type": "string"
+              },
+              "email_address": {
+                "type": "string"
+              },
+              "marital_status": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "gender": {
+                "$ref": "#/components/schemas/Gender"
+              },
+              "residential_status": {
+                "$ref": "#/components/schemas/ResidentialStatus"
+              },
+              "nationality": {
+                "$ref": "#/components/schemas/Nationality"
+              },
+              "alias": {
+                "type": "object"
+              }
+            }
+          },
+          "address": {
+            "type": "array",
+            "items": {
+              "required": [
+                "address_number",
+                "house_name",
+                "house_number",
+                "flat_number",
+                "street",
+                "district",
+                "town",
+                "postcode",
+                "years_at_address",
+                "months_at_address",
+                "county",
+                "overseas"
+              ],
+              "type": "object",
+              "properties": {
+                "address_number": {
+                  "$ref": "#/components/schemas/AddressType"
+                },
+                "house_name": {
+                  "type": "string"
+                },
+                "house_number": {
+                  "type": "string"
+                },
+                "flat_number": {},
+                "street": {
+                  "type": "string"
+                },
+                "district": {
+                  "type": "string"
+                },
+                "town": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "years_at_address": {
+                  "type": "string"
+                },
+                "months_at_address": {
+                  "type": "string"
+                },
+                "county": {},
+                "overseas": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "employment": {
+            "type": "object",
+            "properties": {
+              "permanent_employee": {
+                "type": "string"
+              },
+              "full_time": {
+                "type": "boolean"
+              },
+              "employment_type": {
+                "$ref": "#/components/schemas/EmploymentType"
+              },
+              "occupation": {
+                "type": "string"
+              },
+              "employer_name": {
+                "type": "string"
+              },
+              "years_with_employer": {
+                "type": "string"
+              },
+              "months_with_employer": {
+                "type": "string"
+              },
+              "employer_address": {
+                "type": "object",
+                "properties": {
+                  "address_number": {
+                    "$ref": "#/components/schemas/AddressType"
+                  },
+                  "house_name": {
+                    "type": "string"
+                  },
+                  "house_number": {
+                    "type": "string"
+                  },
+                  "flat_number": {
+                    "type": "string"
+                  },
+                  "street": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "overseas": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "marketing": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "boolean"
+              },
+              "phone": {
+                "type": "boolean"
+              },
+              "sms": {
+                "type": "boolean"
+              },
+              "mail": {
+                "type": "boolean"
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "proposal": {
+            "$ref": "#/components/schemas/Proposal"
+          }
+        }
+      },
+      "GenericErrorResponse": {
+        "type": "object",
+        "properties": {
+          "responseMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "PostSubmitResponse": {
+        "type": "object",
+        "properties": {
+          "customer_permission_given": {
+            "type": "string"
+          },
+          "proposal": {
+            "$ref": "#/components/schemas/Proposal"
+          },
+          "decision": {
+            "type": "object",
+            "properties": {
+              "decision_status": {
+                "$ref": "#/components/schemas/DecisionStatus"
+              },
+              "proposal_number": {
+                "type": "string"
+              },
+              "conditional": {},
+              "condition": {},
+              "decision_message": {
+                "type": "string"
+              },
+              "last_updated": {
+                "type": "string"
+              },
+              "accept_expiry_date": {},
+              "decline_letter": {},
+              "queue": {
+                "type": "object",
+                "properties": {
+                  "decision_queue_position": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "terms": {
+            "type": "object",
+            "properties": {
+              "term": {
+                "type": "string"
+              },
+              "payments_commence": {
+                "type": "string"
+              },
+              "amount_of_credit": {
+                "type": "string"
+              },
+              "acceptance_fee": {
+                "type": "string"
+              },
+              "option_to_purchase_fee": {
+                "type": "string"
+              },
+              "total_amount_payable": {
+                "type": "string"
+              },
+              "total_cost_of_credit": {
+                "type": "string"
+              },
+              "max_advance": {
+                "type": "string"
+              },
+              "total_amount_payable_insurances": {
+                "type": "string"
+              },
+              "manufacturer_dealer_credit": {
+                "type": "string"
+              },
+              "repayment_balance": {
+                "type": "string"
+              },
+              "commission_1": {
+                "type": "string"
+              },
+              "commission_2": {
+                "type": "string"
+              },
+              "subsidy": {
+                "type": "string"
+              },
+              "0-4999_mileage_charge": {
+                "type": "string"
+              },
+              "5000_mileage_charge": {
+                "type": "string"
+              },
+              "discount": {
+                "type": "string"
+              },
+              "insurances": {
+                "type": "object",
+                "properties": {
+                  "amount_of_credit_insurance": {
+                    "type": "string"
+                  },
+                  "charge_for_credit_insurance": {
+                    "type": "string"
+                  },
+                  "insurance_rate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "number_of_payments",
+                "payment_amount",
+                "fee_included",
+                "total_payment"
+              ],
+              "type": "object",
+              "properties": {
+                "number_of_payments": {
+                  "type": "string"
+                },
+                "payment_amount": {
+                  "type": "string"
+                },
+                "fee_included": {
+                  "type": "string"
+                },
+                "total_payment": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "months_to_first_payment": {
+            "type": "string"
+          },
+          "not_taken_up": {},
+          "changes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "message",
+                "parameter_changed",
+                "previous_value",
+                "new_value"
+              ],
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "parameter_changed": {
+                  "type": "string"
+                },
+                "previous_value": {},
+                "new_value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "agreements_available_to_contra": {
+            "type": "array",
+            "items": {
+              "required": [
+                "agreement_number",
+                "agreement_description",
+                "settlements"
+              ],
+              "type": "object",
+              "properties": {
+                "agreement_number": {
+                  "type": "string"
+                },
+                "agreement_description": {
+                  "type": "string"
+                },
+                "settlements": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "settlement_amount",
+                      "expiry_date",
+                      "settle"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "settlement_amount": {
+                        "type": "string"
+                      },
+                      "expiry_date": {
+                        "type": "string"
+                      },
+                      "settle": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "proposal": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "affordability": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "bank-details": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "asset": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "financials": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "addons": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "decision": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              },
+              "submission": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostUploadRequest": {
+        "type": "object",
+        "properties": {
+          "file_type": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "uv_verified": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          }
+        }
+      },
+      "NotTakenUpResponse": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          },
+          "competitor": {}
+        }
+      },
+      "PutCustomerResponse": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string"
+          },
+          "proposal_id": {
+            "type": "string"
+          },
+          "customer_type": {
+            "$ref": "#/components/schemas/CustomerType"
+          },
+          "individual": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "$ref": "#/components/schemas/Title"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "middle_initial": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "date_of_birth": {
+                "type": "string"
+              },
+              "contact_number": {
+                "type": "string"
+              },
+              "contact_number_alternative": {
+                "type": "string"
+              },
+              "email_address": {
+                "type": "string"
+              },
+              "number_of_dependants": {
+                "type": "string"
+              },
+              "marital_status": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "gender": {
+                "$ref": "#/components/schemas/Gender"
+              },
+              "residential_status": {
+                "$ref": "#/components/schemas/ResidentialStatus"
+              },
+              "nationality": {
+                "$ref": "#/components/schemas/Nationality"
+              },
+              "alias": {
+                "type": "object"
+              }
+            }
+          },
+          "address": {
+            "type": "array",
+            "items": {
+              "required": [
+                "address_number",
+                "house_name",
+                "house_number",
+                "flat_number",
+                "street",
+                "district",
+                "town",
+                "postcode",
+                "years_at_address",
+                "months_at_address",
+                "county",
+                "overseas"
+              ],
+              "type": "object",
+              "properties": {
+                "address_number": {
+                  "$ref": "#/components/schemas/AddressType"
+                },
+                "house_name": {
+                  "type": "string"
+                },
+                "house_number": {
+                  "type": "string"
+                },
+                "flat_number": {},
+                "street": {
+                  "type": "string"
+                },
+                "district": {
+                  "type": "string"
+                },
+                "town": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "years_at_address": {
+                  "type": "string"
+                },
+                "months_at_address": {
+                  "type": "string"
+                },
+                "county": {},
+                "overseas": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "employment": {
+            "type": "object",
+            "properties": {
+              "permanent_employee": {
+                "type": "string"
+              },
+              "full_time": {
+                "type": "boolean"
+              },
+              "employment_type": {
+                "$ref": "#/components/schemas/EmploymentType"
+              },
+              "occupation": {
+                "type": "string"
+              },
+              "employer_name": {
+                "type": "string"
+              },
+              "years_with_employer": {
+                "type": "string"
+              },
+              "months_with_employer": {
+                "type": "string"
+              },
+              "use_company_name": {
+                "type": "string"
+              },
+              "employer_address": {
+                "type": "object",
+                "properties": {
+                  "address_number": {
+                    "$ref": "#/components/schemas/AddressType"
+                  },
+                  "house_name": {
+                    "type": "string"
+                  },
+                  "house_number": {
+                    "type": "string"
+                  },
+                  "flat_number": {
+                    "type": "string"
+                  },
+                  "street": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "town": {
+                    "type": "string"
+                  },
+                  "postcode": {
+                    "type": "string"
+                  },
+                  "county": {
+                    "type": "string"
+                  },
+                  "overseas": {}
+                }
+              }
+            }
+          },
+          "marketing": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "boolean"
+              },
+              "phone": {
+                "type": "boolean"
+              },
+              "sms": {
+                "type": "boolean"
+              },
+              "mail": {
+                "type": "boolean"
+              }
+            }
+          },
+          "proposal": {
+            "$ref": "#/components/schemas/Proposal"
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostUploadResponse": {
+        "type": "object",
+        "properties": {
+          "file_type": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "uv_verified": {
+            "type": "string"
+          }
+        }
+      },
+      "Decision": {
+        "type": "object",
+        "properties": {
+          "decision_status": {
+            "$ref": "#/components/schemas/DecisionStatus"
+          },
+          "proposal_number": {
+            "type": "string"
+          },
+          "conditional": {
+            "type": "boolean"
+          },
+          "condition": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "decision_message": {},
+          "last_updated": {
+            "type": "string"
+          },
+          "accept_expiry_date": {
+            "type": "string"
+          },
+          "decline_letter": {},
+          "queue_position": {}
+        }
+      },
+      "DecisionStatus": {
+        "enum": [
+          "ACCEPTED",
+          "REFERRED",
+          "DECLINED",
+          "CHECKING",
+          "DEFERRED",
+          "CONDITIONALACCEPT"
+        ],
+        "type": "string"
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "incorrect_parameter": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "parameter_name": {
+                  "type": "string"
+                },
+                "parameter_value": {
+                  "type": "string"
+                }
+              }
+            },
+            "nullable": true
+          }
+        }
+      },
+      "CustomerType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Consumer",
+          "Sole Trader",
+          "Partnership",
+          "Limited Company",
+          "Charity",
+          "Educational Organisation"
+        ]
+      },
+      "Financials": {
+        "type": "object",
+        "properties": {
+          "product": {
+            "type": "string"
+          },
+          "plan": {
+            "type": "string"
+          },
+          "cash_price": {
+            "type": "decimal"
+          },
+          "deposit": {
+            "type": "object",
+            "properties": {
+              "total_deposit": {
+                "type": "decimal"
+              },
+              "manufacturer_deposit": {
+                "type": "decimal"
+              },
+              "dealer_deposit": {
+                "type": "decimal"
+              },
+              "part_exchange_deposit": {
+                "type": "decimal"
+              },
+              "bank_transfer_deposit": {
+                "type": "decimal"
+              },
+              "card_deposit": {
+                "type": "decimal"
+              },
+              "cheque_deposit": {
+                "type": "decimal"
+              },
+              "cash_deposit": {
+                "type": "decimal"
+              },
+              "electric_vehcile_grant_deposit": {
+                "type": "decimal"
+              }
+            }
+          },
+          "deferred_payment": {
+            "type": "decimal"
+          },
+          "gfv": {
+            "type": "decimal"
+          },
+          "max_annual_mileage": {
+            "type": "integer"
+          },
+          "term": {
+            "type": "integer"
+          },
+          "rate": {
+            "type": "decimal"
+          },
+          "monthly_payment_amount": {
+            "type": "decimal"
+          },
+          "distance_marketed": {
+            "type": "boolean"
+          },
+          "equalised_calculation": {
+            "type": "boolean"
+          },
+          "part_exchange_shortfall": {
+            "type": "decimal"
+          }
+        }
+      },
+      "Affordability": {
+        "type": "object",
+        "properties": {
+          "replace_existing_agreement": {
+            "type": "boolean"
+          },
+          "gross_annual_income": {
+            "type": "integer"
+          },
+          "mortgage_or_rent_contribution": {
+            "type": "integer"
+          },
+          "other_expenditure": {
+            "type": "integer"
+          },
+          "circumstantial_change": {
+            "type": "integer"
+          }
+        }
+      },
+      "Addons": {
+        "type": "object",
+        "properties": {
+          "warranty": {
+            "type": "decimal"
+          },
+          "guaranteed_asset_protection": {
+            "type": "decimal"
+          },
+          "tyre_insurance": {
+            "type": "decimal"
+          },
+          "breakdown_assistance": {
+            "type": "decimal"
+          },
+          "service_plan": {
+            "type": "decimal"
+          },
+          "cosmetic_protection": {
+            "type": "decimal"
+          },
+          "leisure_non_tangibles": {
+            "type": "decimal"
+          }
+        }
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "goods_code": {
+            "$ref": "#/components/schemas/GoodsCode"
+          },
+          "vehicle_use": {
+            "$ref": "#/components/schemas/VehicleUse"
+          },
+          "registration_number": {
+            "type": "string"
+          },
+          "business_use": {
+            "type": "boolean"
+          },
+          "vehicle_mileage": {
+            "type": "integer"
+          },
+          "registration_month": {
+            "type": "string"
+          },
+          "registration_year": {
+            "type": "integer"
+          },
+          "new_vehicle": {
+            "type": "boolean"
+          },
+          "cap_code": {
+            "type": "string"
+          },
+          "hpi": {
+            "type": "string"
+          },
+          "make": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "model_year": {
+            "type": "integer"
+          },
+          "goods_identification": {
+            "type": "string"
+          }
+        }
+      },
+      "BankDetails": {
+        "type": "object",
+        "properties": {
+          "account_name": {
+            "type": "string"
+          },
+          "sort_code": {
+            "type": "integer"
+          },
+          "account_number": {
+            "type": "integer"
+          },
+          "years_with_bank": {
+            "type": "integer"
+          },
+          "months_with_bank": {
+            "type": "integer"
+          }
+        }
+      },
+      "Proposal": {
+        "type": "object",
+        "properties": {
+          "callback_url": {
+            "type": "string"
+          },
+          "customer_permission_given": {
+            "type": "boolean"
+          },
+          "financials": {
+            "$ref": "#/components/schemas/Financials"
+          },
+          "affordability": {
+            "$ref": "#/components/schemas/Affordability"
+          },
+          "addons": {
+            "$ref": "#/components/schemas/Addons"
+          },
+          "asset": {
+            "$ref": "#/components/schemas/Asset"
+          },
+          "bank_details": {
+            "$ref": "#/components/schemas/BankDetails"
+          },
+          "proposal_id": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      },
+      "Title": {
+        "enum": [
+          "Mr",
+          "Mrs",
+          "Miss",
+          "Ms",
+          "Dr",
+          "Rev"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Mr",
+          "Mrs",
+          "Miss",
+          "Ms",
+          "Dr",
+          "Rev"
+        ]
+      },
+      "MaritalStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Married",
+          "Co-habiting",
+          "Single",
+          "Separated",
+          "Divorced",
+          "Widowed"
+        ]
+      },
+      "Gender": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Male",
+          "Female",
+          "Unspecified",
+          "Cross Gender"
+        ]
+      },
+      "ResidentialStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Home Owner",
+          "Tenant",
+          "Living with parents",
+          "Other"
+        ]
+      },
+      "Nationality": {
+        "enum": [
+          "AD",
+          "AE",
+          "AF",
+          "AG",
+          "AI",
+          "AL",
+          "AM",
+          "AO",
+          "AQ",
+          "AR",
+          "AS",
+          "AT",
+          "AU",
+          "AW",
+          "AX",
+          "AZ",
+          "BA",
+          "BB",
+          "BD",
+          "BE",
+          "BF",
+          "BG",
+          "BH",
+          "BI",
+          "BJ",
+          "BL",
+          "BM",
+          "BN",
+          "BO",
+          "BQ",
+          "BR",
+          "BS",
+          "BT",
+          "BV",
+          "BW",
+          "BY",
+          "BZ",
+          "CA",
+          "CC",
+          "CD",
+          "CF",
+          "CG",
+          "CH",
+          "CI",
+          "CK",
+          "CL",
+          "CM",
+          "CN",
+          "CO",
+          "CR",
+          "CU",
+          "CV",
+          "CW",
+          "CX",
+          "CY",
+          "CZ",
+          "DE",
+          "DM",
+          "DO",
+          "DJ",
+          "DK",
+          "DZ",
+          "EC",
+          "EE",
+          "EG",
+          "EH",
+          "ER",
+          "ES",
+          "ET",
+          "FI",
+          "FJ",
+          "FK",
+          "FM",
+          "FO",
+          "FR",
+          "GA",
+          "GB",
+          "GD",
+          "GE",
+          "GF",
+          "GG",
+          "GH",
+          "GI",
+          "GL",
+          "GM",
+          "GN",
+          "GP",
+          "GQ",
+          "GR",
+          "GS",
+          "GT",
+          "GU",
+          "GW",
+          "GY",
+          "HK",
+          "HM",
+          "HN",
+          "HR",
+          "HT",
+          "HU",
+          "ID",
+          "IE",
+          "IL",
+          "IM",
+          "IN",
+          "IO",
+          "IQ",
+          "IR",
+          "IS",
+          "IT",
+          "JE",
+          "JM",
+          "JO",
+          "JP",
+          "KE",
+          "KG",
+          "KH",
+          "KI",
+          "KM",
+          "KN",
+          "KP",
+          "KR",
+          "KW",
+          "KY",
+          "KZ",
+          "LA",
+          "LB",
+          "LC",
+          "LI",
+          "LK",
+          "LR",
+          "LS",
+          "LT",
+          "LU",
+          "LV",
+          "LY",
+          "MA",
+          "MC",
+          "MD",
+          "ME",
+          "MF",
+          "MG",
+          "MH",
+          "MK",
+          "ML",
+          "MM",
+          "MN",
+          "MO",
+          "MP",
+          "MQ",
+          "MR",
+          "MS",
+          "MT",
+          "MU",
+          "MV",
+          "MW",
+          "MX",
+          "MY",
+          "MZ",
+          "NA",
+          "NC",
+          "NE",
+          "NF",
+          "NG",
+          "NI",
+          "NL",
+          "NO",
+          "NP",
+          "NR",
+          "NU",
+          "NZ",
+          "OM",
+          "PA",
+          "PE",
+          "PF",
+          "PG",
+          "PH",
+          "PK",
+          "PL",
+          "PM",
+          "PN",
+          "PR",
+          "PS",
+          "PT",
+          "PW",
+          "PY",
+          "QA",
+          "RE",
+          "RO",
+          "RS",
+          "RU",
+          "RW",
+          "SA",
+          "SB",
+          "SC",
+          "SD",
+          "SE",
+          "SG",
+          "SH",
+          "SI",
+          "SJ",
+          "SK",
+          "SL",
+          "SM",
+          "SN",
+          "SO",
+          "SR",
+          "SS",
+          "ST",
+          "SV",
+          "SZ",
+          "SY",
+          "SZ",
+          "TC",
+          "TD",
+          "TF",
+          "TG",
+          "TH",
+          "TJ",
+          "TK",
+          "TL",
+          "TM",
+          "TN",
+          "TO",
+          "TR",
+          "TT",
+          "TV",
+          "TW",
+          "TZ",
+          "UA",
+          "UG",
+          "UM",
+          "US",
+          "UY",
+          "UZ",
+          "VA",
+          "VC",
+          "VE",
+          "VG",
+          "VI",
+          "VN",
+          "VU",
+          "WF",
+          "WS",
+          "YE",
+          "YT",
+          "ZA",
+          "ZM",
+          "ZW"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Andorra",
+          "United Arab Emirates",
+          "Afghanistan",
+          "Antigua Barbuda",
+          "Anguilla",
+          "Albania",
+          "Armenia",
+          "Angola",
+          "Antarctica",
+          "Argentina",
+          "American Samoa",
+          "Austria",
+          "Australia",
+          "Aruba",
+          "Aland Islands",
+          "Azerbaijan",
+          "Bosnia Herzegovina",
+          "Barbados",
+          "Bangladesh",
+          "Belgium",
+          "Burkina Faso",
+          "Bulgaria",
+          "Bahrain",
+          "Burundi",
+          "Benin",
+          "Saint Barthelemy",
+          "Bermuda",
+          "Brunei Darussalam",
+          "Bolivia",
+          "Bonaire Saint Eustatius & Saba",
+          "Brazil",
+          "Bahamas",
+          "Bhutan",
+          "Bouvet Island",
+          "Botswana",
+          "Belarus",
+          "Belize",
+          "Canada",
+          "Cocos Keeling Islands",
+          "Congo Democratic Republic Of",
+          "Central African Republic",
+          "Congo",
+          "Switzerland",
+          "Cote dIvoire",
+          "Cook Islands",
+          "Chile",
+          "Cameroon",
+          "China",
+          "Colombia",
+          "Costa Rica",
+          "Cuba",
+          "Cape Verde",
+          "Curaçao",
+          "Christmas Island",
+          "Cyprus",
+          "Czech Republic",
+          "Germany",
+          "Dominica",
+          "Dominican Republic",
+          "Djibouti",
+          "Denmark",
+          "Algeria",
+          "Ecuador",
+          "Estonia",
+          "Egypt",
+          "Western Sahara",
+          "Eritrea",
+          "Spain",
+          "Ethiopia",
+          "Finland",
+          "Fiji",
+          "Falkland Islands",
+          "Micronesia",
+          "Faroe Islands",
+          "France",
+          "Gabon",
+          "United Kingdom",
+          "Grenada",
+          "Georgia",
+          "French Guiana",
+          "Guernsey",
+          "Ghana",
+          "Gibraltar",
+          "Greenland",
+          "Gambia",
+          "Guinea",
+          "Guadeloupe",
+          "Equatorial Guinea",
+          "Greece",
+          "South Georgia South Sandwich Islands",
+          "Guatemala",
+          "Guam",
+          "Guinea-Bissau",
+          "Guyana",
+          "Hong Kong",
+          "Heard Island & McDonald Islands",
+          "Honduras",
+          "Croatia",
+          "Haiti",
+          "Hungary",
+          "Indonesia",
+          "Ireland",
+          "Israel",
+          "Isle of Man",
+          "India",
+          "British Indian Ocean Territory",
+          "Iraq",
+          "Iran",
+          "Iceland",
+          "Italy",
+          "Jersey",
+          "Jamaica",
+          "Jordan",
+          "Japan",
+          "Kenya",
+          "Kyrgyzstan",
+          "Cambodia",
+          "Kiribati",
+          "Comoros",
+          "Saint Kitts Nevis",
+          "North Korea",
+          "South Korea",
+          "Kuwait",
+          "Cayman Islands",
+          "Kazakhstan",
+          "Laos",
+          "Lebanon",
+          "Saint Lucia",
+          "Liechtenstein",
+          "Sri Lanka",
+          "Liberia",
+          "Lesotho",
+          "Lithuania",
+          "Luxembourg",
+          "Latvia",
+          "Libya",
+          "Morocco",
+          "Monaco",
+          "Moldova",
+          "Montenegro",
+          "Saint Martin",
+          "Madagascar",
+          "Marshall Islands",
+          "Macedonia",
+          "Mali",
+          "Myanmar",
+          "Mongolia",
+          "Macao",
+          "Northern Mariana Islands",
+          "Martinique",
+          "Mauritania",
+          "Montserrat",
+          "Malta",
+          "Mauritius",
+          "Maldives",
+          "Malawi",
+          "Mexico",
+          "Malaysia",
+          "Mozambique",
+          "Namibia",
+          "New Caledonia",
+          "Niger",
+          "Norfolk Island",
+          "Nigeria",
+          "Nicaragua",
+          "Netherlands",
+          "Norway",
+          "Nepal",
+          "Nauru",
+          "Niue",
+          "New Zealand",
+          "Oman",
+          "Panama",
+          "Peru",
+          "French Polynesia",
+          "Papua New Guinea",
+          "Philippines",
+          "Pakistan",
+          "Poland",
+          "Saint Pierre & Miquelon",
+          "Pitcairn",
+          "Puerto Rico",
+          "Palestine",
+          "Portugal",
+          "Palau",
+          "Paraguay",
+          "Qatar",
+          "Reunion",
+          "Romania",
+          "Serbia",
+          "Russia",
+          "Rwanda",
+          "Saudi Arabia",
+          "Solomon Islands",
+          "Seychelles",
+          "Sudan",
+          "Sweden",
+          "Singapore",
+          "St. Helena Ascension Tristan da Cunha",
+          "Slovenia",
+          "Svalbard Jan Mayen",
+          "Slovakia",
+          "Sierra Leone",
+          "San Marino",
+          "Senegal",
+          "Somalia",
+          "Suriname",
+          "South Sudan",
+          "Sao Tome & Principe",
+          "El Salvador",
+          "Sint Maarten",
+          "Syria",
+          "Swaziland",
+          "Turks & Caicos Islands",
+          "Chad",
+          "French Southern Territories",
+          "Togo",
+          "Thailand",
+          "Tajikistan",
+          "Tokelau",
+          "Timor-Leste",
+          "Turkmenistan",
+          "Tunisia",
+          "Tonga",
+          "Turkey",
+          "Trinidad & Tobago",
+          "Tuvalu",
+          "Taiwan",
+          "Tanzania",
+          "Ukraine",
+          "Uganda",
+          "United States Minor Outlying Islands",
+          "United States of America",
+          "Uruguay",
+          "Uzbekistan",
+          "Holy See",
+          "Saint Vincent Grenadines",
+          "Venezuela",
+          "Virgin Islands (British)",
+          "Virgin Islands (U.S.)",
+          "Vietnam",
+          "Vanuatu",
+          "Wallis Futuna",
+          "Samoa",
+          "Yemen",
+          "Mayotte",
+          "South Africa",
+          "Zambia",
+          "Zimbabwe"
+        ]
+      },
+      "AddressType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Current Address",
+          "Previous Address",
+          "Address prior to Previous Address 1",
+          "Address prior to Previous Address 2",
+          "Address prior to Previous Address 3",
+          "Address prior to Previous Address 4",
+          "Undeclared Address"
+        ]
+      },
+      "EmploymentType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Private",
+          "Government",
+          "Self Employed",
+          "Military",
+          "Student",
+          "Homemaker",
+          "Retired",
+          "Unemployed",
+          "Receiving Disability Benefit"
+        ]
+      },
+      "VehicleUse": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "x-enumNames": [
+          "Social",
+          "Business",
+          "Driving School",
+          "Taxi Hire"
+        ]
+      },
+      "CircumstantialChange": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "nullable": true,
+        "x-enumNames": [
+          "No",
+          "Yes Retirement expected",
+          "Yes Redundancy expected",
+          "Yes Reduction in salary expected",
+          "Yes Career change expected",
+          "Yes Change in family circumstances expected",
+          "Yes Other expected"
+        ]
+      },
+      "GoodsCode": {
+        "enum": [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "09",
+          "10",
+          "15",
+          "16",
+          "62",
+          "63",
+          "64",
+          "65",
+          "72",
+          "73",
+          "74",
+          "75",
+          "79",
+          "80",
+          "81",
+          "86",
+          "87",
+          "88",
+          "89",
+          "92",
+          "93",
+          "94",
+          "95",
+          "98"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "New cars",
+          "Used cars less than 36 months old",
+          "Used cars 36 months old up to 60 months old",
+          "Used cars over 61 months old and over",
+          "New commercial vehicles Less Than 3.5 tons",
+          "Used commercial vehicles Less Than 3.5 tons",
+          "New motorcycles",
+          "Used motorcycles",
+          "New scooters",
+          "Used scooters",
+          "Horse trailer new",
+          "Horse trailer used",
+          "Horse box motorised new",
+          "Horse box motorised used",
+          "New trailers",
+          "Used trailers",
+          "New motor caravans",
+          "Used motor caravans",
+          "New touring caravans",
+          "Touring caravans used Less Than 3 years old",
+          "Touring caravans used between 3 and 5 years old",
+          "New taxis",
+          "Used taxis",
+          "New holiday homes",
+          "Used holiday homes",
+          "Jet skis",
+          "Touring caravans used between 5 and 9 years old",
+          "Touring caravans used over 9 years old",
+          "Off-road bikes",
+          "Quad bikes"
+        ]
+      },
+      "GetPlanResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "plan": {
+            "type": "string"
+          },
+          "product": {
+            "type": "string"
+          },
+          "campaign": {
+            "type": "string"
+          },
+          "promotion": {
+            "type": "string"
+          },
+          "max_commission": {
+            "type": "string"
+          },
+          "months_to_first_payment": {
+            "type": "string"
+          },
+          "volume_bonus": {
+            "type": "string"
+          },
+          "plan_end_date": {
+            "type": "string"
+          },
+          "option_to_purchase_fee": {
+            "type": "string"
+          },
+          "commission_1": {
+            "type": "string"
+          },
+          "commission_2": {
+            "type": "string"
+          },
+          "manufacturer_dealer_credit": {
+            "type": "string"
+          },
+          "rate_line": {
+            "type": "array",
+            "items": {
+              "required": [
+                "min_advance",
+                "max_advance",
+                "min_term",
+                "max_term",
+                "min_age",
+                "max_age",
+                "new_vehicle",
+                "commission_rate",
+                "min_rate",
+                "max_rate",
+                "min_deposit_amount",
+                "min_deposit_percentage"
+              ],
+              "type": "object",
+              "properties": {
+                "min_advance": {
+                  "type": "string"
+                },
+                "max_advance": {
+                  "type": "string"
+                },
+                "min_term": {
+                  "type": "string"
+                },
+                "max_term": {
+                  "type": "string"
+                },
+                "min_age": {
+                  "type": "string"
+                },
+                "max_age": {
+                  "type": "string"
+                },
+                "new_vehicle": {
+                  "type": "string"
+                },
+                "commission_rate": {
+                  "type": "string"
+                },
+                "min_rate": {
+                  "type": "string"
+                },
+                "max_rate": {
+                  "type": "string"
+                },
+                "min_deposit_amount": {
+                  "type": "string"
+                },
+                "min_deposit_percentage": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "allowances": {
+            "type": "array",
+            "items": {
+              "required": [
+                "cap_code",
+                "manufacturer_deposit_allowance",
+                "dealer_deposit_allowance",
+                "dealer_subsidy"
+              ],
+              "type": "object",
+              "properties": {
+                "cap_code": {
+                  "type": "string"
+                },
+                "manufacturer_deposit_allowance": {
+                  "type": "string"
+                },
+                "dealer_deposit_allowance": {
+                  "type": "string"
+                },
+                "dealer_subsidy": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Organisation": {
+        "type": "object",
+        "properties": {
+          "company_name": {
+            "type": "string"
+          },
+          "company_registered_number": {
+            "type": "string"
+          },
+          "contact_number": {
+            "type": "string"
+          },
+          "email_address": {
+            "type": "string"
+          },
+          "contact_number_alternative": {
+            "type": "string"
+          },
+          "company_type": {
+            "type": "string"
+          },
+          "vat_number": {
+            "type": "string"
+          },
+          "trading_as_name": {
+            "type": "string"
+          },
+          "vat_registered": {
+            "type": "boolean"
+          },
+          "incorporation_date": {
+            "type": "string"
+          },
+          "nature_of_business": {
+            "type": "string"
+          },
+          "industry_code": {
+            "type": "string"
+          },
+          "contact": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "additional_personnel": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "middle_initial": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "date_of_birth": {
+                "type": "string"
+              },
+              "email_address": {
+                "type": "string"
+              },
+              "contact_number": {
+                "type": "string"
+              },
+              "contact_number_alternative": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "permanent_employee": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "residential_status": {
+                "type": "string"
+              },
+              "nationality": {
+                "type": "string"
+              },
+              "guarantor": {
+                "type": "boolean"
+              },
+              "address": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "address_number": {
+                      "type": "string"
+                    },
+                    "house_name": {
+                      "type": "string"
+                    },
+                    "house_number": {
+                      "type": "string"
+                    },
+                    "flat_number": {
+                      "type": "string"
+                    },
+                    "street": {
+                      "type": "string"
+                    },
+                    "district": {
+                      "type": "string"
+                    },
+                    "town": {
+                      "type": "string"
+                    },
+                    "postcode": {
+                      "type": "string"
+                    },
+                    "years_at_address": {
+                      "type": "string"
+                    },
+                    "months_at_address": {
+                      "type": "string"
+                    },
+                    "county": {
+                      "type": "string"
+                    },
+                    "overseas": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/ApplicationRequest",
+    "$version": 1,
+    "definitions": {
+        "ApplicationRequest": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "funderFees": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FunderFee"
+                    }
+                },
+                "applicants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Applicant"
+                    }
+                },
+                "dealer": {
+                    "$ref": "#/definitions/Dealer"
+                },
+                "quote": {
+                    "$ref": "#/definitions/Quote"
+                },
+                "asset": {
+                    "$ref": "#/definitions/Asset"
+                },
+                "dispersalOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DispersalOption"
+                    }
+                }
+            },
+            "required": [
+                "applicants"
+            ],
+            "title": "ApplicationRequest"
+        },
+        "Applicant": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isMainApplicant": {
+                    "type": "boolean"
+                },
+                "applicantType": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "forename": {
+                    "type": "string"
+                },
+                "middlename": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "sexAtBirth": {
+                    "type": "string"
+                },
+                "maritalStatus": {
+                    "type": "string"
+                },
+                "isUkResident": {
+                    "type": "boolean"
+                },
+                "homephone": {
+                    "type": "string"
+                },
+                "workphone": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "drivingLicenceType": {
+                    "type": "string"
+                },
+                "residenceHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResidenceHistory"
+                    }
+                },
+                "employmentHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EmploymentHistory"
+                    }
+                },
+                "company": {
+                    "$ref": "#/definitions/Company"
+                },
+                "financialStatus": {
+                    "$ref": "#/definitions/FinancialStatus"
+                },
+                "bank": {
+                    "$ref": "#/definitions/Bank"
+                },
+                "marketingPreference": {
+                    "$ref": "#/definitions/MarketingPreference"
+                }
+            },
+            "required": [
+
+            ],
+            "title": "Applicant"
+        },
+        "Bank": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "accountName": {
+                    "type": "string"
+                },
+                "bankName": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "accountNumber": {
+                    "type": "string"
+                },
+                "sortCode": {
+                    "type": "string"
+                },
+                "years": {
+                    "type": "string"
+                },
+                "months": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "accountName",
+                "accountNumber",
+                "address",
+                "bankName",
+                "months",
+                "sortCode",
+                "years"
+            ],
+            "title": "Bank"
+        },
+        "Address": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "unit": {
+                    "type": "string"
+                },
+                "houseName": {
+                    "type": "string"
+                },
+                "houseNumber": {
+                    "type": "string"
+                },
+                "addressLine1": {
+                    "type": "string"
+                },
+                "addressLine2": {
+                    "type": "string"
+                },
+                "addressLine3": {
+                    "type": "string"
+                },
+                "town": {
+                    "type": "string"
+                },
+                "county": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Address"
+        },
+        "Company": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "companyNumber": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "establishedMonth": {
+                    "type": "integer"
+                },
+                "establishedYear": {
+                    "type": "integer"
+                },
+                "nature": {
+                    "type": "string"
+                },
+                "sortcode": {
+                    "type": "string"
+                },
+                "accountNumber": {
+                    "type": "string"
+                },
+                "isVatRegistered": {
+                    "type": "boolean"
+                },
+                "vatNumber": {
+                    "type": "string"
+                },
+                "companyRole": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Company"
+        },
+        "EmploymentHistory": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "orderNumber": {
+                    "type": "integer"
+                },
+                "occupationType": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "yearsAtCompany": {
+                    "type": "integer"
+                },
+                "monthsAtCompany": {
+                    "type": "integer"
+                },
+                "employmentType": {
+                    "type": "string"
+                },
+                "employmentStatus": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            },
+            "required": [
+                "orderNumber"
+            ],
+            "title": "EmploymentHistory"
+        },
+        "FinancialStatus": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "annualGrossIncome": {
+                    "type": "integer"
+                },
+                "affordability": {
+                    "type": "string"
+                },
+                "affordabilityReason": {
+                    "type": "string"
+                },
+                "affordabilityMonthlyMortgageRentContribution": {
+                    "type": "integer"
+                },
+                "affordabilityMonthlyOtherExpenditure": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "FinancialStatus"
+        },
+        "MarketingPreference": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "optInEmail": {
+                    "type": "boolean"
+                },
+                "optInSms": {
+                    "type": "boolean"
+                },
+                "optInPhone": {
+                    "type": "boolean"
+                },
+                "optInPost": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "optInEmail",
+                "optInPhone",
+                "optInPost",
+                "optInSms"
+            ],
+            "title": "MarketingPreference"
+        },
+        "ResidenceHistory": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "orderNumber": {
+                    "type": "integer"
+                },
+                "residentialStatusShortcode": {
+                    "type": "string"
+                },
+                "yearsAtAddress": {
+                    "type": "integer"
+                },
+                "monthsAtAddress": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "address",
+                "monthsAtAddress",
+                "orderNumber",
+                "residentialStatusShortcode",
+                "yearsAtAddress"
+            ],
+            "title": "ResidenceHistory"
+        },
+        "Asset": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "make": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "style": {
+                    "type": "string"
+                },
+                "assetType": {
+                    "type": "string"
+                },
+                "bikeCc": {
+                    "type": "string"
+                },
+                "isNew": {
+                    "type": "boolean"
+                },
+                "vrm": {
+                    "type": "string"
+                },
+                "vin": {
+                    "type": "string"
+                },
+                "capCode": {
+                    "type": "string"
+                },
+                "currentMileage": {
+                    "type": "integer"
+                },
+                "registrationDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "title": "Asset"
+        },
+        "Dealer": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dealerId": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "string"
+                },
+                "dealerCode": {
+                    "type": "string"
+                },
+                "dealerGroupCode": {
+                    "type": "string"
+                },
+                "isMccWeblead": {
+                    "type": "boolean"
+                },
+                "commissionType": {
+                    "type": "string"
+                },
+                "dealerPackageCode": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "groupId",
+                "isMccWeblead"
+            ],
+            "title": "Dealer"
+        },
+        "DispersalOption": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "isVatable": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "amount",
+                "isVatable",
+                "name"
+            ],
+            "title": "DispersalOption"
+        },
+        "FunderFee": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "front": {
+                    "type": "integer"
+                },
+                "frontSpread": {
+                    "type": "integer"
+                },
+                "back": {
+                    "type": "integer"
+                },
+                "monthlyAddition": {
+                    "type": "integer"
+                },
+                "maxAdvance": {
+                    "type": "integer"
+                },
+                "interestSpread": {
+                    "type": "boolean"
+                },
+                "frontSpecial": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "back",
+                "front",
+                "frontSpecial",
+                "frontSpread",
+                "interestSpread",
+                "maxAdvance",
+                "monthlyAddition"
+            ],
+            "title": "FunderFee"
+        },
+        "Quote": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isBusinessQuote": {
+                    "type": "boolean"
+                },
+                "isDistanceSold": {
+                    "type": "boolean"
+                },
+                "quoteDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "annualMileage": {
+                    "type": "integer"
+                },
+                "partExchange": {
+                    "type": "integer"
+                },
+                "settlement": {
+                    "type": "integer"
+                },
+                "deposit": {
+                    "type": "integer"
+                },
+                "flatRate": {
+                    "type": "number"
+                },
+                "term": {
+                    "type": "integer"
+                },
+                "vehicleCashPrice": {
+                    "type": "integer"
+                },
+                "isVehicleVatQualifying": {
+                    "type": "boolean"
+                },
+                "balloonValue": {
+                    "type": "integer"
+                },
+                "financeType": {
+                    "type": "string"
+                },
+                "apr": {
+                    "type": "number"
+                },
+               "settlementMonthlyAmount": {
+                 "type": "number"
+                },
+               "experianCountyCourtJudgments": {
+                 "type": "integer"
+               },
+               "equifaxCountyCourtJudgments": {
+                 "type": "integer"
+               },
+               "experianDefaults": {
+                 "type": "integer"
+               },
+               "equifaxDefaults": {
+                 "type": "integer"
+               }
+            },
+            "required": [
+                "annualMileage",
+                "apr",
+                "balloonValue",
+                "deposit",
+                "financeType",
+                "flatRate",
+                "isBusinessQuote",
+                "isVehicleVatQualifying",
+                "partExchange",
+                "quoteDate",
+                "settlement",
+                "term",
+                "vehicleCashPrice",
+                "isDistanceSold",
+                "settlementMonthlyAmount",
+                "experianCountyCourtJudgments",
+                "equifaxCountyCourtJudgments",
+                "equifaxDefaults",
+                "experianDefaults"
+            ],
+            "title": "Quote"
+        }
+    }
+}

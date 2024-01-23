@@ -1,0 +1,37 @@
+mode: ContinuousDeployment
+ignore:
+  sha: []
+merge-message-formats: {}
+assembly-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-scheme: MajorMinorPatchTag
+
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{ShortSha}'
+assembly-versioning-format: '{Major}.{Minor}.{Patch}.{ShortSha}'
+increment: Patch
+continuous-delivery-fallback-tag: ''
+
+branches:
+  main:
+    regex: ^master$|^main$
+    mode: ContinuousDeployment
+    tag: ''
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: [ 'develop' ]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 55000
+  develop:
+    regex: ^evo?[-]
+    mode: ContinuousDeployment
+    tag: beta.{BranchName}
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: [ 'main', 'master' ]
+    tracks-release-branches: true
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000

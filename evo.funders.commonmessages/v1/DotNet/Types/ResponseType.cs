@@ -1,0 +1,29 @@
+namespace AzureFunderCommonMessages.DotNet.Types
+{
+    public enum ResponseType
+    {
+        SendApplicationResponse,
+        SendDocument,
+        EsignResponse,
+        StatusResponse,
+        DocumentAvailable,
+        FunderErrors,
+        ServiceErrors,
+        ValidationErrors,
+        Error,
+        DrivingLicenceUpdateResponse,
+        AssetUpdatedResponse,
+        BankDetailsUpdatedResponse, 
+        OpenBankingResponse,
+        CommunicationResponse,
+        GenericResponse,
+        EnhancedBankingResponse,
+        TaskResponse,
+        DocumentUploadResponse,
+        AdditionalFinanceResponse,
+        InvoiceAddressResponse,
+        GuaranteedFutureValueResponse,
+        ESignTriggeredResponse,
+        ESignCompletedResponse
+    }
+}

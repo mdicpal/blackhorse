@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/ValidationErrors",
+    "$version": 1,
+    "definitions": {
+        "ValidationErrors": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "errors",
+                "message",
+                "status"
+            ],
+            "title": "Welcome"
+        }
+    }
+}

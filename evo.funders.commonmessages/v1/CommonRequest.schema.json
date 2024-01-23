@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/CommonRequest",
+    "$version": 1,
+    "definitions": {
+        "CommonRequest": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "requestType": {
+                    "enum": ["MakeApplication", "GetEsign", "AdditionalData", "GetQuote", "DocumentUpload"]
+                },
+                "quoteId": {
+                    "type": "integer"
+                },
+                "funderCode": {
+                    "type": ["integer","string"]
+                },
+                "version": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "data",
+                "funderCode",
+                "quoteId",
+                "requestType",
+                "version"
+            ],
+            "title": "CommonRequest"
+        }
+    }
+}

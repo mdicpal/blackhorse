@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/DocumentAvailable",
+    "$version": 1,
+    "definitions": {
+        "AzureDocumentAvailable": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            },
+            "required": [
+                "message",
+                "status",
+                "url"
+            ],
+            "title": "DocumentAvailable"
+        }
+    }
+}

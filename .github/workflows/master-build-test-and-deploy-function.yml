@@ -1,0 +1,39 @@
+name: Main build, test and deploy
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'main'
+      - 'v[0-9]+-*'
+    paths-ignore:
+      - '**/README.md'
+      - '**/az-test.yml'
+
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  call-template:
+    uses: EvolutionFunding/evo.core/.github/workflows/template_main_build_and_deploy_v1.yml@master
+    with:
+      CAPABILITY: 'funders'                            # Set to the name of the vertical slice your service lives in
+      SERVICE_NAME: 'blackhorse'                  # Set to the name of your service, keep it below 15 characters
+      PUBLISH_API_TO_APIM: false                  # Set to true if your service has any HTTP endpoints that expose swagger
+      API_VISIBILITY: 'internal'                  # set to 'external' if you want your service to be exposed publicly via API Management
+      API_MAJOR_VERSION: '1'                      # Major version of your service, should only be changed on breaking changes
+      #MAIN_BICEP_FILE_PATH: ''                   # OPTIONAL: defaults to 'bicep/main.bicep' if not specified
+      #MAIN_BICEP_FILE_ADDITIONAL_PARAMETERS: ''  # OPTIONAL: defaults to 'bicep/params.json' if not specified
+      #AZURE_SQL_SERVER_INSTANCE: '0'             # OPTIONAL: defaults to 0 unless specified otherwise
+      DOTNET_PATH_TO_SOLUTION: 'Orchestrator'         # Folder that contains your function
+      #DOTNET_VERSION: ''                         # OPTIONAL: defauls to 6.0.x if not specified
+      RUN_AUTOMATION_TESTS: false                 # Set to true if you want the automation tests to run
+      RUN_NEW_AUTOMATION_TESTS: false
+      #TEST_PROJECT: 'CHANGEME'                    # Check with the QA team for this value, only used if RUN_AUTOMATION_TESTS or RUN_NEW_AUTOMATION_TESTS is set to true
+      TEST_TAGS_TO_RUN: 'automation'                # Check with the QA team for this value, only used if RUN_AUTOMATION_TESTS or RUN_NEW_AUTOMATION_TESTS is set to true
+      RUN_DB_MIGRATIONS: true                    # set to true if you have database migrations
+      #DEPLOY_TO_STAGING: false                   # OPTIONAL: defaults to false, only set to true if this service is actually required in staging environment.
+    secrets: inherit

@@ -1,0 +1,14 @@
+name: Branch delete
+
+on:
+  delete:
+    branches:
+      - 'evo-*'
+      - 'EVO-*'
+
+jobs:
+  call-template:
+    uses: EvolutionFunding/evo.core/.github/workflows/template_branch_delete_v1.yml@master
+    with:
+      CAPABILITY: 'funders' # Set to the name of the vertical slice your service lives in
+    secrets: inherit

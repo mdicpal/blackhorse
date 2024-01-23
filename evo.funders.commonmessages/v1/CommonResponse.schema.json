@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/CommonResponse",
+    "$version": 1,
+    "definitions": {
+        "CommonResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "funderReference": {
+                    "$ref": "#/definitions/FunderReference"
+                },
+                "created": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "rawData": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RawDatum"
+                    }
+                },
+                "responseType": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "object"
+                },
+                "funderCode": {
+                    "type": "string"
+                },
+                "quoteId": {
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "created",
+                "funderCode",
+                "quoteId",
+                "rawData",
+                "response",
+                "responseType",
+                "version"
+            ],
+            "title": "CommonResponse"
+        },
+        "FunderReference": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "proposal": {
+                    "type": "string"
+                },
+                "application": {
+                    "type": "string"
+                },
+                "agreement": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agreement",
+                "application",
+                "proposal"
+            ],
+            "title": "FunderReference"
+        },
+        "RawDatum": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "raw": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "format",
+                "raw",
+                "timestamp",
+                "type"
+            ],
+            "title": "RawDatum"
+        }
+    }
+}

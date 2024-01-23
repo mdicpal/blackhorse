@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/SubResponse",
+    "$version": 1,
+    "definitions": {
+        "SubResponse": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "requestObject": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "message",
+                "requestObject",
+                "status"
+            ],
+            "title": "SubResponse"
+        }
+    }
+}

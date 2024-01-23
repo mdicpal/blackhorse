@@ -1,0 +1,284 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "OpenAPI Document on Azure Functions",
+        "version": "1.0.0"
+    },
+    "host": "evo-funders-func-dev-instancestore-v1.azurewebsites.net",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/count-status": {
+            "get": {
+                "tags": [
+                    "Count"
+                ],
+                "operationId": "CountStatus",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The orchestror status count response",
+                        "schema": {
+                            "$ref": "#/definitions/statusCount"
+                        }
+                    }
+                }
+            }
+        },
+        "/instances/{quoteId}/{funderCode}": {
+            "delete": {
+                "tags": [
+                    "Orchestrator"
+                ],
+                "operationId": "DeleteOrchestrator",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quoteId",
+                        "description": "Evolves internal quoteId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "path",
+                        "name": "funderCode",
+                        "description": "Unique funder identifier",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Standard response object",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "404": {
+                        "description": "No records to delete",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Orchestrator"
+                ],
+                "operationId": "GetOrchestrator",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quoteId",
+                        "description": "Evolves internal quoteId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "path",
+                        "name": "funderCode",
+                        "description": "Unique funder identifier",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The orchestror response",
+                        "schema": {
+                            "$ref": "#/definitions/orchestrator"
+                        }
+                    },
+                    "404": {
+                        "description": "Instance not found for supplied quoteId",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Orchestrator"
+                ],
+                "operationId": "PutOrchestrator",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quoteId",
+                        "description": "Evolves internal quoteId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "path",
+                        "name": "funderCode",
+                        "description": "Unique funder identifier",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "The orchestror request",
+                        "schema": {
+                            "$ref": "#/definitions/request"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    }
+                }
+            }
+        },
+        "/instances/fromApplicationId/{applicationId}/{funderCode}": {
+            "get": {
+                "tags": [
+                    "Orchestrator"
+                ],
+                "operationId": "GetOrchestratorByApplicationId",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "applicationId",
+                        "description": "Funders application id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "funderCode",
+                        "description": "Unique funder identifier",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The orchestror response",
+                        "schema": {
+                            "$ref": "#/definitions/orchestrator"
+                        }
+                    },
+                    "404": {
+                        "description": "Instance not found for supplied quoteId",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "orchestrator": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "instanceId": {
+                    "type": "string"
+                },
+                "quoteId": {
+                    "format": "int32",
+                    "maximum": 2147483647,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "funderCode": {
+                    "type": "string"
+                },
+                "applicationId": {
+                    "description": "This is the funders reference to the quote",
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "request": {
+            "type": "object",
+            "properties": {
+                "applicationId": {
+                    "description": "This is the funders reference to the quote",
+                    "type": "string"
+                },
+                "instanceId": {
+                    "pattern": "[0-9A-Fa-f]{32}",
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "response": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "statusCount": {
+            "type": "object",
+            "properties": {
+                "completed": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "running": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

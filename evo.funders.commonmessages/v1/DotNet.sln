@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunderCommonMessages.DotNet", "DotNet\AzureFunderCommonMessages.DotNet.csproj", "{1BD2134D-DF10-4B9A-8FCB-82C82AE79D73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{CE8C9DD9-0F66-445C-8C32-8A9FEDDBCAC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3CA06C5C-8F8E-43B9-8469-E5D02CBA2AFE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BD2134D-DF10-4B9A-8FCB-82C82AE79D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BD2134D-DF10-4B9A-8FCB-82C82AE79D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BD2134D-DF10-4B9A-8FCB-82C82AE79D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BD2134D-DF10-4B9A-8FCB-82C82AE79D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8C9DD9-0F66-445C-8C32-8A9FEDDBCAC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8C9DD9-0F66-445C-8C32-8A9FEDDBCAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8C9DD9-0F66-445C-8C32-8A9FEDDBCAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8C9DD9-0F66-445C-8C32-8A9FEDDBCAC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CE21C54-783D-4781-8C9F-4500FDDBDC10}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,148 @@
+﻿{
+  "requestType": "MakeApplication",
+  "quoteId": 509,
+  "funderCode": "V12",
+  "version": 1,
+  "data": {
+    "applicants": [
+      {
+        "isMainApplicant": true,
+        "applicantType": "Personal",
+        "title": "Mr",
+        "forename": "Test",
+        "middlename": "Middle",
+        "surname": "User",
+        "dob": "1988-03-18",
+        "sexAtBirth": "m",
+        "maritalStatus": "Single",
+        "isUkResident": true,
+        "homephone": "01215431289",
+        "mobile": "07423303429",
+        "email": "test@evolutionfunding.com",
+        "drivingLicenceType": "UK Full",
+        "nationality": "British",
+        "residenceHistory": [
+          {
+            "address": {
+              "unit": "TestSubBuilding",
+              "houseName": "Test",
+              "houseNumber": "1",
+              "addressLine1": "Doe Lane",
+              "addressLine2": "",
+              "addressLine3": "",
+              "town": null,
+              "county": "Test County",
+              "postcode": "S419AZ"
+            },
+            "orderNumber": 1,
+            "residentialStatusShortcode": "Owner",
+            "yearsAtAddress": 17,
+            "monthsAtAddress": 9
+          }
+        ],
+        "employmentHistory": [
+          {
+            "orderNumber": 1,
+            "occupationType": "Accountancy",
+            "jobTitle": "Tester",
+            "company": "EvolutionFundingLtd",
+            "yearsAtCompany": 9,
+            "monthsAtCompany": 3,
+            "employmentType": "Full time",
+            "employmentStatus": "Employed",
+            "phoneNumber": "0215678648",
+            "address": {
+              "unit": "",
+              "houseName": "",
+              "houseNumber": "",
+              "addressLine1": "Thompson Close",
+              "addressLine2": "",
+              "addressLine3": "",
+              "town": "Chesterfield",
+              "county": "",
+              "postcode": "S419AZ"
+            }
+          },
+          {
+            "orderNumber": 2,
+            "jobTitle": "Tester",
+            "company": "EvolutionFundingLtd2",
+            "yearsAtCompany": 10,
+            "monthsAtCompany": 4,
+            "phoneNumber": null
+          }
+        ],
+        "financialStatus": {
+          "annualGrossIncome": 20000,
+          "affordability": "Affordable",
+          "affordabilityReason": "ExampleReason",
+          "affordabilityMonthlyMortgageRentContribution": 100
+        },
+        "bank": {
+          "accountName": "Test User",
+          "bankName": "NATIONWIDE BUILDING SOCIETY",
+          "address": {
+            "addressLine1": "P.O. Box 8888",
+            "addressLine2": "Nationwide Hse",
+            "addressLine3": "Pipers Way",
+            "town": "Swindon L",
+            "county": "Wilts.",
+            "postcode": "SN38 1NW"
+          },
+          "accountNumber": "10909132",
+          "sortCode": "070116",
+          "years": "15",
+          "months": "4"
+        },
+        "marketingPreference": {
+          "optInEmail": true,
+          "optInSms": true,
+          "optInPhone": true,
+          "optInPost": true
+        }
+      }
+    ],
+    "dealer": {
+      "dealerId": "6859",
+      "groupId": null,
+      "dealerCode": "6859",
+      "dealerGroupCode": null,
+      "isMccWeblead": false,
+      "commissionType": "FRP Enhanced",
+      "dealerPackageCode": null
+    },
+    "quote": {
+      "isBusinessQuote": false,
+      "quoteDate": "2023-03-22",
+      "annualMileage": 10000,
+      "partExchange": 1000,
+      "settlement": 123,
+      "deposit": 2000,
+      "flatRate": 5.3,
+      "term": 24,
+      "vehicleCashPrice": 7706.67,
+      "isVehicleVatQualifying": false,
+      "balloonValue": 0,
+      "financeType": "HP",
+      "apr": 10.33,
+      "isDistanceSold": false,
+      "settlementMonthlyAmount": 0,
+      "experianCountyCourtJudgments": 0,
+      "experianDefaults": 0,
+      "equifaxCountyCourtJudgments": 0,
+      "equifaxDefaults": 0
+    },
+    "asset": {
+      "make": "BMW",
+      "model": "4 SERIES DIESEL COUPE",
+      "style": "430d M Sport 2dr Auto",
+      "assetType": "Car",
+      "isNew": false,
+      "vrm": "WO14LWN",
+      "vin": "1HGBH41JXMN109186",
+      "capCode": "BM4S303MT2CDTA",
+      "currentMileage": 10365,
+      "registrationDate": "2014-08-06"
+    }
+  }
+}

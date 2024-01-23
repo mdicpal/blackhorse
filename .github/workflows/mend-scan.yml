@@ -1,0 +1,15 @@
+name: Mend Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+  schedule:
+    - cron: "0 0 * * 0"
+
+  workflow_dispatch:
+
+jobs:
+  call-template:
+    uses: EvolutionFunding/evo.core/.github/workflows/template_mend_scan_v1.yml@master
+    secrets: inherit
